@@ -15,11 +15,22 @@ int main(){
     printf("Enter a number.\n");
     scanf("%d",&n);
     int a[n][n];
+    //三角的两边赋值为1
     for(int i=0; i<n; i++){
         a[i][i]=1;
         a[i][0]=1;
     }
+    //从第三行开始，中间的每一个元素，等于该元素上面一个元素与左上元素之和
     for(int i=2; i<n; i++){
-        
+        for(int j=1; j<i; j++){
+            a[i][j]=a[i-1][j]+a[i-1][j-1];
+        }
     }
+    for(int i=0; i<n; i++){
+        for(int j=0; j<=i; j++){
+            printf("%6d",a[i][j]);
+        }
+        printf("\n");
+    }
+    return 0;
 }
